@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Canine Playtime</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/menu">
+                <img src="{% static 'img/perrofondo.png'%}" alt="Bootstrap" width="30" height="24">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/menu">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/comprar">Comprar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Redes Sociales
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Instagram</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="">Facebook</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="">Twitter</a></li>
+                        </ul>
+                    </li> 
+                    <li class="nav-item dropdown">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link dropdown-toggle" href="#" id="navarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ user.username }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navarDropdown4">
+                                <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+                                <a class="dropdown-item" href="/crud">Lista de Usuarios</a>
+                                <a class="dropdown-item" href="/lista">Lista de Productos</a>
+                            </div>
+                        {% else %} 
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <span>Iniciar Sesion</span>
+                            </a>
+                        {% endif %}
+                    </li>
+                               
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h1 class="letrasp">Canine Playtime</h1>
+                <br>
+                <p class="textoa my-4">Nuestro emprendimiento se dedica a la venta de articulos para mascotas tales como alimentos, juguetes, camas, collares y otros productos esenciales.</p>
+              </div>   
+              <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <img class="img1" src="{% static 'img/dog.png'%}" alt="" style="margin: auto; display: block;">
+            </div>            
+        </div>
+        <hr>
+        <div class="" style="text-align: center; font-size: 150%;">NUESTROS PRODUCTOS</div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Kong para perros</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete2.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Hueso de plastico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete3.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Peluche de hongo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete4.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Mini tunel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete5.png'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Varita loro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete6.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Torre de pelotas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete7.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Mancuerna de plastico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex flex-wrap justify-content-center my-3">
+                    <div class="card mx-2 my-3 bg-dark border-light" style="width: 18rem;">
+                        <img src="{% static 'img/jugete8.jpg'%}" class="card-img-top" alt="...">
+                        <div class="card-body bl text-white">
+                            <p class="card-text">Pelota de plastico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+<footer class="bg-dark py-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>© 2024 Canine Playtime. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html> 

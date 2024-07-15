@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 p-5 mt-3 mx-auto table-responsive">
+                <h1>Lista de Usuarios</h1><br>
+                
+                <a href="{% url 'userAdd' %}">
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <a href="{% url 'menu' %}" class="btn btn-primary">Volver</a>
+                </a>
+                    {% if mensaje %}
+                    {{mensaje}}
+                    {% endif%}
+                </div>
+
+                <table class="table table-dark table-striped mt-3">
+                    {% if usuario %}
+                    <thead>
+                        <th>Rut</th>
+                        <th>Nombre Completo</th>
+                        <th>Correo</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody>
+                        {% for user in usuario %}
+                        <tr>
+                            <td>{{user.rut}}</td>
+                            <td>{{user.nombre}} {{user.appPaterno}} {{user.appMaterno}}</td>
+                            <td>{{user.correo}}</td>
+                            <td><a href="{% url 'userEdit' pk=user.rut%}">Modificar</a></td>
+                            <td><a href="{% url 'userDel' pk=user.rut%}">Eliminar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <style>
+        body {
+            background-image: url(static/img/fondo12.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: azure;
+        }
+    </style> 
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+
+</html> 

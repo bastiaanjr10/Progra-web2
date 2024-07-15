@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 p-5 mt-3 mx-auto table-responsive">
+                <h1>Lista de Productos</h1>
+                <a href="{% url 'agregar_producto' %}" class="btn btn-success">Agregar Producto</a>
+                <a href="{% url 'menu' %}" class="btn btn-primary">Volver</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Tipo de Producto</th>
+                            <th>Acciones</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto.codigo }}</td>
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.tipoProducto }}</td>
+                            <td>
+                                <a href="{% url 'editar_producto' producto.codigo %}" class="btn btn-primary">Editar</a>
+                                <a href="{% url 'eliminar_producto' producto.codigo %}"
+                                    class="btn btn-danger">Eliminar</a>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="stock" placeholder="Ingresar stock">
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+
+</html> 

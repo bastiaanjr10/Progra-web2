@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Eliminar Producto</h1>
+        <p>¿Estás seguro de que quieres eliminar el producto "{{ producto.nombre }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+</html> 

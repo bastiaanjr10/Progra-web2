@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Editar Producto</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ producto.nombre }}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="tipoProducto" class="form-label">Tipo de Producto</label>
+                <select name="tipoProducto" id="tipoProducto" class="form-control">
+                    {% for tipoProducto in tiposProducto %}
+                        {% if producto.tipoProducto.id == tipoProducto.idTipoProducto %}
+                            <option value="{{ tipoProducto.idTipoProducto }}" selected>{{ tipoProducto.tipoProducto }}</option>
+                        {% else %}
+                            <option value="{{ tipoProducto.idTipoProducto }}">{{ tipoProducto.tipoProducto }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+
+</html> 
